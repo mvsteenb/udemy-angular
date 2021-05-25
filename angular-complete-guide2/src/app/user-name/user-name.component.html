@@ -1,0 +1,29 @@
+<h3>Username component</h3>
+
+<div class="row">
+  <div class="col-xs-12" style="margin:10px;">
+    <label>User name:</label>
+    <input type="text" class="form-control" [(ngModel)]="userName">
+    <button class="btn btn-primary" (click)="resetUserName()" [disabled]="userName===''">Reset username</button>
+    <p>{{ userName }}</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12" style="margin:10px;">
+
+    <button class="btn btn-primary" (click)="handleDisplayDetails()">Display details</button>
+    <p *ngIf="detailsVisible">Secret password = tuna</p>
+    <p 
+      *ngFor="let log of detailsButtonEventLog; let i = index"
+      [ngStyle]="{backgroundColor: i>=4 ? 'blue':'white'}"             
+      [ngClass]="{'white-text': i>=4}"
+    >
+      {{ log }}
+    </p>
+
+  </div>
+</div> 
+
+<hr>
