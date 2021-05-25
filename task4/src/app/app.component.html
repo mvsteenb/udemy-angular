@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row">
     <div *ngFor="let event of events">
-      <app-odd *ngIf="event.tick % 2 != 0"></app-odd>
-      <app-even *ngIf="event.tick % 2 == 0"></app-even>
+      <app-odd [number]="event.tick" *ngIf="event.tick % 2 != 0"></app-odd>
+      <app-even [number]="event.tick" *ngIf="event.tick % 2 == 0"></app-even>
     </div>
   </div>
 </div>
