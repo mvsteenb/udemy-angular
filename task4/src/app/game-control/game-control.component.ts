@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TickEvent } from '../model/tickEvent.model';
 
 @Component({
   selector: 'app-game-control',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class GameControlComponent implements OnInit {
 
   currentInterval : number;
-  intervalRef;
-
+  intervalRef; 
+  @Output('tickEvent') tickEventEmitter = new EventEmitter<TickEvent>();
+  tick: number = 0;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -18,13 +21,17 @@ export class GameControlComponent implements OnInit {
   startGame() {
     console.log("Starting game...");
     this.intervalRef = setInterval(
-      () => { console.log('tick' + this.intervalRef) },
+      () => { 
+        this.tick++;
+        this.tickEventEmitter.emit(new TickEvent(this.tick));
+      },
       1000
     );
   }
 
   stopGame() {
     console.log("Stopping game...");
+    this.tick = 0;
     clearInterval(this.intervalRef);
   }
 

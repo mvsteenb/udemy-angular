@@ -1,1 +1,10 @@
-<app-game-control></app-game-control>
+<app-game-control (tickEvent)="handleTickEvent($event)"></app-game-control>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let event of events">
+      <app-odd *ngIf="event.tick % 2 != 0"></app-odd>
+      <app-even *ngIf="event.tick % 2 == 0"></app-even>
+    </div>
+  </div>
+</div>
