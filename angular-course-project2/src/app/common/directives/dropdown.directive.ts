@@ -28,7 +28,7 @@ export class DropdownDirective {
 
   // close dropdown by clicking anywhere on the document !
   @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
-    console.log("dropdown clicked !");
+    //console.log("dropdown clicked !");
     this.open = this.elRef.nativeElement.contains(event.target) ? !this.open : false;
   }
 }
