@@ -6,7 +6,7 @@ import { Ingredient } from "src/app/common/model/ingredient.model";
 })
 export class ShoppingService {
 
-  ingredientAddedEventEmitter = new EventEmitter<Ingredient>();
+  ingredientsChangedEventEmitter = new EventEmitter<Ingredient[]>();
 
   private ingredients: Ingredient[] = [
     new Ingredient('Applies', 5),
@@ -29,7 +29,18 @@ export class ShoppingService {
 
   addIngredient(ingredient : Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientAddedEventEmitter.emit(ingredient);
+    this.ingredientsChangedEventEmitter.emit(this.getIngredients());
+  }
+
+  /**
+   * Add multiple ingredients at once to shopping list
+   * @param ingredients ingredients
+   */
+
+  addIngredients(ingredients : Ingredient[]) {
+    this.ingredients.push(...ingredients);
+    console.log("Added multiple ingredients to shopping list : " + this.ingredients.length);
+    this.ingredientsChangedEventEmitter.emit(this.getIngredients());
   }
 
 }
