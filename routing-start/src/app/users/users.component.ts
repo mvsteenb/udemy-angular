@@ -9,15 +9,15 @@ export class UsersComponent {
   users = [
     {
       id: 1,
-      name: 'Max'
+      name: 'Mario'
     },
     {
       id: 2,
-      name: 'Anna'
+      name: 'Monica'
     },
     {
       id: 3,
-      name: 'Chris'
+      name: 'Phoebe'
     }
   ];
 }
