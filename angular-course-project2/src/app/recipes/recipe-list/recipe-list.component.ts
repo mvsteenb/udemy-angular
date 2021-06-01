@@ -18,7 +18,7 @@ export class RecipeListComponent implements OnInit{
      this.recipes = this.recipeService.getRecipes();
   }
 
-  /*setSelectedRecipe(recipe: Recipe) {
+  setSelectedRecipe(recipe: Recipe) {
     //this.recipeSelectedEventEmitter.emit(recipe);
-  }*/
+  }
 }
