@@ -22,14 +22,13 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {    
     console.log("init recipe detail !")
 
-
-    const id = this.route.snapshot.params['id'];
-    this.recipe = this.recipseService.getRecipes[id];
+    //const id = this.route.snapshot.params['id'];
+    //this.recipe = this.recipseService.getRecipes[id];
     this.route.params.subscribe(
       (params: Params) => {        
-        const id = this.route.snapshot.params['id'];
+        const id = +params['id'];
         console.log("RECIPE DETAIL ROUTE CHANGED : " + id)
-        this.recipe = this.recipseService.getRecipes()[id];
+        this.recipe = this.recipseService.getRecipe(id);
       }
     );
   }
