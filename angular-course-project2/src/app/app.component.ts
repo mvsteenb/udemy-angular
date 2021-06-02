@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  selectedComponent: string = 'recipes';
-
-  setSelectedComponent(event : {component: string}) {
-    console.log("APP : selected component" + event.component);
-    this.selectedComponent = event.component;
-  }
-
 }
