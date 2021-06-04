@@ -15,6 +15,7 @@ export class RecipesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   ngOnDestroy() {
