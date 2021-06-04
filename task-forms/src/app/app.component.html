@@ -18,11 +18,18 @@
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" class="form-control" password required ngModel #password="ngModel">
-          <span class="help-block" *ngIf="!password.valid && password.touched">Invalid subscription !</span>
+          <span class="help-block" *ngIf="!password.valid && password.touched">Invalid password !</span>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
-        
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>        
       </form>
+    </div>    
+  </div>  
+  <div *ngIf="formData" class="row">
+    <div class="col-xs-12">
+      <hr>
+      E-mail : {{ formData.email }} <br/>
+      Subscription : {{ formData.subscription }} <br/>
+      Password : {{ formData.password }} <br/>
     </div>
   </div>
 </div>
