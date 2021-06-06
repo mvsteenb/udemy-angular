@@ -50,6 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loadedPosts = postData;
       },
       error => {
+        this.isFetching = false;
         this.errorMessage = error.message;
         console.log(error);
       }
@@ -62,5 +63,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loadedPosts = [];
       }
     );
+  }
+
+  onHandleError() {
+    this.errorMessage = null;
   }
 }
