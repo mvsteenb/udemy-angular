@@ -13,6 +13,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { IngredientComponent } from './shopping/ingredient/ingredient.component';
 import { ShoppingEditComponent } from './shopping/shopping-list/shopping-edit/shopping-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { DropdownDirective } from './common/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
@@ -38,8 +39,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
