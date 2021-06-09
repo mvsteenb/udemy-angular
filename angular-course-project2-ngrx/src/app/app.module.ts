@@ -9,6 +9,8 @@ import { SharedModule } from './common/shared.module';
 import { CoreModule } from './core.module';
 import { FormsModule } from '@angular/forms';
 import { LoggingService } from './logging.service';
+import { StoreModule } from '@ngrx/store';
+import { shoppingReducer } from './shopping/store/shopping.reducer';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { LoggingService } from './logging.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot({shoppingList: shoppingReducer}),
     SharedModule,
   ],
   bootstrap: [AppComponent],
