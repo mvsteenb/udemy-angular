@@ -1,11 +1,11 @@
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { AppRoutingModule } from "../app-routing.module";
+import { RouterModule } from "@angular/router";
+import { SharedModule } from "../common/shared.module";
 import { IngredientComponent } from "./ingredient/ingredient.component";
 import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { ShoppingRoutingModule } from "./shopping-routing.module";
 
 @NgModule({
   declarations: [
@@ -14,11 +14,10 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
     ShoppingEditComponent,
   ],
   imports: [
-    BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule    
+    SharedModule,
+    RouterModule,
+    ShoppingRoutingModule
   ],
 })
 export class ShoppingModule {
