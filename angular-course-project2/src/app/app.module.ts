@@ -5,11 +5,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { ShoppingModule } from './shopping/shopping.module';
 import { SharedModule } from './common/shared.module';
 import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
 import { FormsModule } from '@angular/forms';
+import { LoggingService } from './logging.service';
 
 @NgModule({
   declarations: [
@@ -22,10 +21,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ShoppingModule,
     SharedModule,
-    AuthModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [LoggingService]
 })
 export class AppModule { }

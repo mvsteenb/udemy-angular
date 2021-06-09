@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "../common/shared.module";
+import { LoggingService } from "../logging.service";
 import { IngredientComponent } from "./ingredient/ingredient.component";
 import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
@@ -19,6 +20,9 @@ import { ShoppingRoutingModule } from "./shopping-routing.module";
     RouterModule,
     ShoppingRoutingModule
   ],
+  providers: [
+    LoggingService
+  ]
 })
 export class ShoppingModule {
 
