@@ -1,8 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/user.model';
 import { DataStorageService } from '../services/data-storage.service';
+import * as fromApp from '../../store/app.reducer';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -18,11 +21,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //selectedComponent = 'recipes';
   //@Output('componentChangeEvent') componentChangeEventEmitter = new EventEmitter<{component: string}>();
 
-  constructor(private dataStorageService: DataStorageService, private authService: AuthService) { }
+  constructor(
+    private dataStorageService: DataStorageService, 
+    private authService: AuthService,
+    private store: Store<fromApp.AppState>
+  ) { }
 
   ngOnInit(): void {
-    this.authSubscription = this.authService.userSubject.subscribe(
-      (user: User) => {
+    //this.authSubscription = this.authService.userSubject.subscribe(
+    this.store.select('auth')
+      .pipe(map(authState => authState.user))
+      .subscribe(user => {
         this.currentUser = user;
         this.isAuthenticated = !!this.currentUser;
       }

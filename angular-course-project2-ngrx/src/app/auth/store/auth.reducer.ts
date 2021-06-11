@@ -13,7 +13,7 @@ export function authReducer(
   state = initialState,         // set default to initial state
   action: AuthActions.AuthActions
 ) { 
-
+  console.log(state)
   switch(action.type) {
     case AuthActions.LOGIN : 
       const loginUser = new User(action.payload.email, action.payload.userId, action.payload.token, action.payload.expirationDate);
