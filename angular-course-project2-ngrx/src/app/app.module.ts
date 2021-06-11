@@ -10,7 +10,7 @@ import { CoreModule } from './core.module';
 import { FormsModule } from '@angular/forms';
 import { LoggingService } from './logging.service';
 import { StoreModule } from '@ngrx/store';
-import { shoppingReducer } from './shopping/store/shopping.reducer';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { shoppingReducer } from './shopping/store/shopping.reducer';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({shoppingList: shoppingReducer}),
+    StoreModule.forRoot(fromApp.appReducer),
     SharedModule,
   ],
   bootstrap: [AppComponent],

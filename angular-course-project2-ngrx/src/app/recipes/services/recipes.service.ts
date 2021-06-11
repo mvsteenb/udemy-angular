@@ -1,10 +1,10 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { Ingredient } from "src/app/common/model/ingredient.model";
 import { Recipe } from "../model/recipe.model";
 import * as ShoppingListActions from "src/app/shopping/store/shopping.actions";
-import * as fromShoppingList from '../../shopping/store/shopping.reducer';
+import * as fromApp from "../../store/app.reducer";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class RecipeService {
   recipeSelected = new Subject<Recipe>();
   recipeChangedEmitter = new Subject<Recipe[]>();
  
-  constructor(private store: Store<fromShoppingList.AppState> ) {}
+  constructor(private store: Store<fromApp.AppState> ) {}
 
   // private recipes: Recipe[] = [
   //   new Recipe(
