@@ -8,6 +8,7 @@ export const FETCH_RECIPES = '[Recipes] Fetch Recipes';
 export const ADD_RECIPE = '[Recipes] Add Recipe'; 
 export const UPDATE_RECIPE = '[Recipes] Update Recipe'; 
 export const DELETE_RECIPE = '[Recipes] Delete Recipe'; 
+export const STORE_RECIPES = '[Recipes] Store Recipes';
 
 // ************** action classes ****************
 
@@ -18,6 +19,10 @@ export class SetRecipes implements Action {
 
 export class FetchRecipes implements Action {
   readonly type= FETCH_RECIPES;
+}
+
+export class StoreRecipes implements Action {
+  readonly type= STORE_RECIPES;
 }
 
 export class AddRecipe implements Action {
@@ -32,7 +37,7 @@ export class UpdateRecipe implements Action {
 
 export class DeleteRecipe implements Action {
   readonly type= DELETE_RECIPE;
-  constructor(public payload: { index: number; }) {}
+  constructor(public payload: number) {}
 }
 
 // ************** union ****************

@@ -20,17 +20,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   isAuthenticated = false;
 
-  //selectedComponent = 'recipes';
-  //@Output('componentChangeEvent') componentChangeEventEmitter = new EventEmitter<{component: string}>();
-
   constructor(
-    private dataStorageService: DataStorageService, 
-    private authService: AuthService,
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-    //this.authSubscription = this.authService.userSubject.subscribe(
     this.store.select('auth')
       .pipe(map(authState => authState.user))
       .subscribe(user => {
@@ -41,23 +35,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSaveData() {
-    this.dataStorageService.storeRecipes();
+    this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
   onLoadData() {
-    //this.dataStorageService.fetchRecipes().subscribe();
     this.store.dispatch(new RecipeActions.FetchRecipes());
   }
 
   onLogout() {
     this.store.dispatch(new AuthActions.Logout());
   }
-
-  /*setSelectedComponent(componentName: string) {
-    console.log("selected component: " + componentName);
-    this.selectedComponent = componentName;
-    this.componentChangeEventEmitter.emit({component : this.selectedComponent});
-  }*/
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
