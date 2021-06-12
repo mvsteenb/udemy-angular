@@ -3,7 +3,6 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Recipe } from '../model/recipe.model';
-import { RecipeService } from '../services/recipes.service';
 import * as fromAppStore from '../../store/app.reducer';
 import * as RecipeActions from '../store/recipes.actions';
 import { map } from 'rxjs/operators';
