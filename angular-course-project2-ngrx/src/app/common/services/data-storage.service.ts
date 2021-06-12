@@ -4,6 +4,9 @@ import { Recipe } from "src/app/recipes/model/recipe.model";
 import { RecipeService } from "src/app/recipes/services/recipes.service";
 
 import { map, tap } from 'rxjs/operators';
+import { Store } from "@ngrx/store";
+import * as fromApp from '../../store/app.reducer';
+import * as RecipesActions from '../../recipes/store/recipes.actions';
 
 const requestUrl = 'https://ng-course-recipe-book-8ace1-default-rtdb.europe-west1.firebasedatabase.app/recipes.json';
 
@@ -12,7 +15,8 @@ export class DataStorageService {
 
   constructor(
     private http: HttpClient,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private store: Store<fromApp.AppState>
   ) {
 
   }
@@ -40,7 +44,8 @@ export class DataStorageService {
       }),
       tap(
         recipes => {
-          this.recipeService.setRecipes(recipes);
+          //this.recipeService.setRecipes(recipes);
+          this.store.dispatch(new RecipesActions.SetRecipes(recipes));
         }
       )
     );
