@@ -26,31 +26,25 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {    
     console.log("init recipe detail !")
 
-    //const id = this.route.snapshot.params['id'];
-    //this.recipe = this.recipseService.getRecipes[id];
-    this.route.params.pipe(
+    this.route.params
+    .pipe(
       map(params => {
-        return +params['id']
+        return +params['id'];
       }),
-      switchMap(
-        id => {
-          this.id = id;
-          return this.store.select('recipes');
-        }
-      ),
+      switchMap(id => {
+        this.id = id;
+        return this.store.select('recipes');
+      }),
       map(recipesState => {
-        return recipesState.recipes.find(
-          (recipe, index) => {
-            return index === this.id;
-          }
-        );
-      })    
+        return recipesState.recipes.find((recipe, index) => {
+          return index === this.id;
+        });
+      })
     )
-    .subscribe(
-      (recipe) => {
-        this.recipe = recipe;
-      }
-    );
+    .subscribe(recipe => {
+      this.recipe = recipe;
+    });
+
   }
 
   addIngredientsToShoppingList() {

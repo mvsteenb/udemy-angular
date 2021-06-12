@@ -26,7 +26,8 @@ const handleAuthentication = (expiresIn: number, email: string, userId: string, 
     email: email, 
     userId: userId, 
     token: token, 
-    expirationDate 
+    expirationDate: expirationDate,
+    redirect: true
   });   
 }
 
@@ -130,7 +131,8 @@ export class AuthEffects {
             email: loadedUser.email, 
             userId: loadedUser.id, 
             token: loadedUser.token, 
-            expirationDate: new Date(userData._tokenExpirationDate)
+            expirationDate: new Date(userData._tokenExpirationDate),
+            redirect: false
           }
         );
       }
@@ -143,9 +145,11 @@ export class AuthEffects {
   @Effect({dispatch: false}) // does not return a dispatchable action !
   authRedirect = this.actions$.pipe(
     ofType(AuthActions.AUTHENTICATE_SUCCESS), 
-    tap( () => {
-      console.log("REDIRECT TO ROOT");
-      this.router.navigate(['/']);
+    tap( (authSuccessAction: AuthActions.AuthenticationSuccess) => {
+      if (authSuccessAction.payload.redirect) {
+        console.log("REDIRECT TO ROOT");      
+        this.router.navigate(['/']);
+      }
     }) 
   );
 
