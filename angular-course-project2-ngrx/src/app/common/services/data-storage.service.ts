@@ -1,7 +1,6 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Recipe } from "src/app/recipes/model/recipe.model";
-import { RecipeService } from "src/app/recipes/services/recipes.service";
 
 import { map, tap } from 'rxjs/operators';
 import { Store } from "@ngrx/store";
@@ -15,7 +14,6 @@ export class DataStorageService {
 
   constructor(
     private http: HttpClient,
-    private recipeService: RecipeService,
     private store: Store<fromApp.AppState>
   ) {
 
@@ -23,7 +21,8 @@ export class DataStorageService {
 
   storeRecipes() {
     console.log("Saving recipes...")
-    const recipes = this.recipeService.getRecipes();
+    //const recipes = this.recipeService.getRecipes();
+    this.store.select('recipes').
     this.http.put(requestUrl, recipes).subscribe(
       response => {
         console.log(response);
