@@ -21,8 +21,8 @@ export class DataStorageService {
 
   storeRecipes() {
     console.log("Saving recipes...")
-    //const recipes = this.recipeService.getRecipes();
-    this.store.select('recipes').
+    const recipes = null; // TODO FIX THIS !!! this.recipeService.getRecipes();
+    //this.store.select('recipes').
     this.http.put(requestUrl, recipes).subscribe(
       response => {
         console.log(response);
