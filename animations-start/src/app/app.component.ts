@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -61,20 +61,46 @@ import { Component } from '@angular/core';
           transform: 'translateX(100px)'
         }))
       ]),
-    ]),,
+    ]),
     trigger('list2', [
       state('in', style({
         opacity: '1',
         transform: 'translateX(0)'
       })),
       transition('void => *', [
-        animate(1000)
+        animate(1000, keyframes([
+          style({
+            transform: 'translateX(-100px)',
+            opacity: 0,
+            offset: 0
+          }),
+          style({
+            transform: 'translateX(-50px)',
+            opacity: 0.5,
+            offset: 0.3 
+          }),
+          style({
+            transform: 'translateX(-20)',
+            opacity: 1,
+            offset: 0.8           
+          }),
+          style({
+            transform: 'translateX(0)',
+            opacity: 1,
+            offset: 1
+          })
+        ]))
       ]),
       transition('* => void', [
-        animate(500, style({
-          opacity : '0',
-          transform: 'translateX(100px)'
-        }))
+        group([                    // perform animations at the same time !
+          animate(300, style({
+            color : 'red'
+          })),
+          animate(800, style({
+            opacity : '0',
+            transform: 'translateX(100px)',
+          }))
+        ]),
       ]),
     ]),
   ]
@@ -101,5 +127,13 @@ export class AppComponent {
 
   onDelete(item) {
     this.list.splice(this.list.indexOf(item), 1);
+  }
+
+  animationStarted(event) {
+    console.log("Animation started" + event);
+  }
+
+  animationEnded(event) {
+    console.log("Animation ended" + event);
   }
 }
