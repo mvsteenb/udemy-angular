@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-pwa": {
+    "my-first-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,17 +13,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-pwa",
+            "outputPath": "dist/my-first-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -44,27 +44,25 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-pwa:build"
+            "browserTarget": "my-first-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-pwa:build:production"
+              "browserTarget": "my-first-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-pwa:build"
+            "browserTarget": "my-first-app:build"
           }
         },
         "test": {
@@ -80,8 +78,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ]
           }
         },
@@ -99,7 +96,7 @@
         }
       }
     },
-    "angular-pwa-e2e": {
+    "my-first-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,7 +104,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-pwa:serve"
+            "devServerTarget": "my-first-app:serve"
           }
         },
         "lint": {
@@ -122,5 +119,5 @@
       }
     }
   },
-  "defaultProject": "angular-pwa"
+  "defaultProject": "my-first-app"
 }
