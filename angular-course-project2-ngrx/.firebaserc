@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-complete-guide-fc4f5": {
+      "hosting": {
+        "angular-course-project": [
+          "ng-complete-guide-fc4f5"
+        ]
+      }
+    }
+  }
+}
